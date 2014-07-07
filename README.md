@@ -1,6 +1,6 @@
 <h1>Project2:xkcd password generator</h1>
 
-<p><b>Live URL:</b>http://xkcd-pralak.rhcloud.com/</p>
+<p><b>Live URL:</b>http://xkcdpg-pralak.rhcloud.com/</p>
 
 <p><b>Description of the Project:</b> This app generates password for the users based on the xkcd-password-generator.<br>
 The app accepts <em>number of words</em> the user wishes to have in the newly generated password. The user also has options to incude
