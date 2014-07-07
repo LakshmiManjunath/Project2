@@ -36,10 +36,10 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
 			<option value='7' <?php if($word_count == 7){echo "selected='selected'";} ?>>7</option>
 			<option value='8' <?php if($word_count == 8){echo "selected='selected'";} ?>>8</option>
 			<option value='9' <?php if($word_count == 9){echo "selected='selected'";} ?>>9</option>
-		</select><br>
-		<label>Include a Number</label><input type="checkbox" name="add_number" <?php if($add_number){echo "checked='checked'";} ?>><br>
-		<label>Include a Symbol</label><input type="checkbox" name="add_symbol" <?php if($add_symbol){echo "checked='checked'";} ?>><br>
-		<label>Uppercase the first letter</label><input type="checkbox" name="upper_case" <?php if($upper_case){echo "checked='checked'";} ?>><br>	
+		</select><span style="color:red;font-size:15px;">*Select atleast one word</span><br>
+		<label id="i_number">Include a Number<input type="checkbox" name="add_number" <?php if($add_number){echo "checked='checked'";} ?>></label><br>
+		<label  id="i_symbol">Include a Symbol<input type="checkbox" name="add_symbol" <?php if($add_symbol){echo "checked='checked'";} ?>></label><br>
+		<label id="i_caps">Uppercase the first letter<input type="checkbox" name="upper_case" <?php if($upper_case){echo "checked='checked'";} ?>></label><br>	
 		<br><input type="submit" value="Generate Password!" id="generate_password">
 	</div><br>
 

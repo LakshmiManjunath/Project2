@@ -15,6 +15,11 @@ h1{
 /* Section that accepts user input*/
 .input{text-align:center;}
 
+/* Styling the labels*/
+#i_symbol,#i_caps,#i_number{margin-left:-50px;}
+#i_symbol{margin-right:-6px;}
+#i_caps{margin-right:48px;}
+
 /* Section that displays the newly generated password*/
 .display_div{
 	text-align:center;
