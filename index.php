@@ -1,3 +1,7 @@
+	<?php
+error_reporting(E_ALL);       # Report Errors, Warnings, and Notices
+ini_set('display_errors', 1); # Display errors on page (instead of a log file)
+?>
 
 <!DOCTYPE html>
 <html>
@@ -35,21 +39,38 @@
 		</select><br>
 		<label>Include a Number</label><input type="checkbox" name="add_number" <?php if($add_number){echo "checked='checked'";} ?>><br>
 		<label>Include a Symbol</label><input type="checkbox" name="add_symbol" <?php if($add_symbol){echo "checked='checked'";} ?>><br>
+		<label>Uppercase the first letter</label><input type="checkbox" name="upper_case" <?php if($upper_case){echo "checked='checked'";} ?>><br>	
 		<br><input type="submit" value="Generate Password!" id="generate_password">
 	</div><br>
 
 <!-- Section which displays the generated password -->
 	<div class="display_div" style="display:<?php echo $display_mode ;?>;">
-	<span style="color:#6666FF;font-size:25px;font-family:'Cabin Condensed';"> Password: </span><?php 
-		foreach($new_Password as $word)
+	<span style="color:#6666FF;font-size:25px;font-family:'Cabin Condensed';"> Password: </span>
+	
+	<?php 
+/* If the user chooses to capitalize the first word of the password, the capitalized word is appended to the rest of the array. The array_slice() function is used to set the array-index to the 2nd element, thus preventing the re-printing of the first word */
+		if($first_word)
 		{
-			echo $word.' ';
+			echo $first_word.' ';
+			$new_Password = array_slice($new_Password,1);
+			foreach($new_Password as $word)
+			{
+				echo $word.' ';
+			}
+		}
+/* When the user does not choose to capitalize the first letter of the Newly-Generated-Password */
+		else
+		{
+			foreach($new_Password as $word)
+			{
+				echo $word.' ';
+			}
 		}
 	?>
 	</div>
 </form>
 
-<!-- Section describing what is xkcd password and how is it generated -->
+<!-- Section describing what is xkcd password and how it is generated -->
 <div class="info">
 	<p><b>xkcd</b>, created by Randall Munroe, is a webcomic of romance, sarcasm, math, and language. The subject matter of the comic varies from statements on life &amp; love to mathematical &amp; scientific jokes.</p>
 	<p class="image"><a href="http://xkcd.com/936/"><img src="images/password_strength.png" alt="password_strength"></a> </p>

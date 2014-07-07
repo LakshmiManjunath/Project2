@@ -6,7 +6,7 @@ $word_list = array(
 	'subject','walking','aim','minimum','fiscal','skirt','dump','hence','database','uncomfortable',
 	'execute','limb','ideology','average','welcome','tune','continuing','harm','horn','endure',);
 	
-//List of symbols. There are 20 symbols in this array, with indexes from 0 to 19
+//List of symbols. There are 19 symbols in this array, with indexes from 0 to 18
 $symbol_list = array ( '!','@','#','$','%','^','&','*','+','|','?','>','<','/','~','=','-','_',';');
 
 // Checking the number of words chosen for the password
@@ -17,9 +17,15 @@ $symbol_list = array ( '!','@','#','$','%','^','&','*','+','|','?','>','<','/','
 	
 // Checking if the user chooses to include Symbols	
 	$add_symbol = isset($_POST['add_symbol']) ? 'checked' : '';
+
+// Checking if the user chooses to Upper Case the first letter		
+    $upper_case = isset($_POST['upper_case']) ? 'checked' : '';
 	
 //Initializing the new_password variable
 	$new_Password = array();
+	
+/*Initializing the variable to store the capitalized first word of the password. This variable is used based on the users choice */
+	$first_word = "";
 
 /*If the user has chosen atleast a word,then the display mode of the dsplay_div is set 
 to block mode */ 
@@ -41,11 +47,19 @@ to block mode */
 	{
 		$number = rand(0,9);
 		array_push($new_Password,"$number");
+		
 	}
 /* If the user chooses to add a symbol to the new password, a random numerical is chosen using rand() on the indexes of the array of list of symbols, $symbol_list  */
 	if($add_symbol == 'checked')
 	{
-		$j = rand(0,19);
-		array_push($new_Password,$symbol_list[$j]);
+		$j = rand(0,18);
+		array_push($new_Password,$symbol_list[$j]);		
 	}
+/* If the user chooses to capitalize the first word of the new password, the built-in function ucfirst() retrieves only the first word from the newly generated password. The trim() function makes sure there are no preceding white spaces in front of this word*/
+	if($upper_case == 'checked')
+	{
+		$first_word= ucfirst(trim($new_Password[0]));
+	}
+
+	
 ?>
